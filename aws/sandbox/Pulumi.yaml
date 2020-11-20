@@ -1,4 +1,4 @@
 name: aws-sandbox
 runtime:
   name: python
-description: A minimal AWS Python Pulumi program
+description: AWS sandbox infra
