@@ -28,12 +28,8 @@ server = aws.ec2.Instance('sandbox-server',
                           instance_type=size,
                           subnet_id=subnet.id,  # !!! Without subnet_id instance creation fails (VPCIdNotSpecified)
                           vpc_security_group_ids=[group.id],    # reference security group from above
-                          ami=ami.id,
-                          # key_name="roman-dev"
+                          ami=ami.id
                           )
-
-# ssh_key = aws.ec2.KeyPair("roman-dev",
-#                           public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDs7shf1gXPP6DwUiWQIiI3wdrnTx/4/lxD3cWr/wVyNJeiyBsN/HOxAQVe1k7LYU6Klt1tsF98AgAeKeE/9s/HmgAOQJLdhLlDk4Tvs7jMDwvwdvCj/rJoIIen1vdsYF44KlWarUVDJikR8TPSS/vRL5xp+rnztaWQWPezxYi0uXCZEuqqHNXt3GzlEHs1m1NAyUPTjc0HuX3ASiXsbD4MQtQxdVOwLwX/0JdqQkcdf97BjhBfmH0sBRXPZcPK694r5l5wK6W2pxZJEs+phDfvUUXtxhVj/N6G38yA3mDlwhG1jO3TKfL3LMMV7wlOMm7qIEWMRoekI0n+ea+olrRJQX+lG7Ww4Fcsayl1Un6hMHOgXXzpZnODFPp96NooDXoditnqhejWArSOREkNk4n6BCqDoiz9PVyisaX/idwh3AeJ8rowsjx41f2D08s8BKhf3Z9eSbXW5R/pp1ZONzCaB50NUVk1J8bZzpLDeGNKoeh/O3zvKYEik+euK6zaiTU= roman@dev")
 
 pulumi.export('publicIp', server.public_ip)
 pulumi.export('publicHostName', server.public_dns)
